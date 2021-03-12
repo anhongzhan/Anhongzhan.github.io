@@ -4,6 +4,56 @@
   
     
     <entry>
+      <title>刷题小笔记01</title>
+      <link href="2021/03/07/shua-ti-xiao-bi-ji-01/"/>
+      <url>2021/03/07/shua-ti-xiao-bi-ji-01/</url>
+      
+        <content type="html"><![CDATA[<h3 id="C语言中的优先级问题"><a href="#C语言中的优先级问题" class="headerlink" title="C语言中的优先级问题"></a>C语言中的优先级问题</h3><p>我们在使用C语言判断一个整数的奇偶性时通常会使用如下方式：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">if(n % 2 &#x3D;&#x3D; 0)</span><br></pre></td></tr></table></figure><p>还有一种方式就是使用按位与运算，让整数n与1进行按位与运算，奇数二进制表示中最后一位一定为1，然后问题就出现了</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1、  if(n &amp; 1 &#x3D;&#x3D; 0)</span><br><span class="line"></span><br><span class="line">2、  if((n &amp; 1) &#x3D;&#x3D; 0)</span><br></pre></td></tr></table></figure><p>我在进行判断时习惯性地使用了方法1，但是得到的结果差了很多，检查其他代码无误后发现n的值变化和预期的不太一样，于是考虑到优先级问题</p><p>首先第一种方法中<code>==</code>号的优先级高于<code>&amp;</code>，所以每一次进入if语句中都是在计算<code>n &amp; 0</code>,结果肯定是false，而在第二种方法中则是先计算括号中的内容，然后再判断是否等于0</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 刷题笔记 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> leetcode </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>数据库系统03</title>
+      <link href="2021/03/03/shu-ju-ku-xi-tong-03/"/>
+      <url>2021/03/03/shu-ju-ku-xi-tong-03/</url>
+      
+        <content type="html"><![CDATA[<h2 id="第3章：结构化查询语言-Structured-Query-Language（SQL）"><a href="#第3章：结构化查询语言-Structured-Query-Language（SQL）" class="headerlink" title="第3章：结构化查询语言 Structured Query Language（SQL）"></a>第3章：结构化查询语言 Structured Query Language（SQL）</h2><h3 id="3-1-SQL数据定义"><a href="#3-1-SQL数据定义" class="headerlink" title="3.1 SQL数据定义"></a>3.1 SQL数据定义</h3><ul><li>基本数据类型</li></ul><ol><li>SQL提供的基本数据类型有：数值型、日期时间型、串型、枚举型<ol><li>数值型：<ol><li>整型</li><li>定点型：DECIMAL(p,s):有效数字共p位，小数点后s位</li><li>浮点型：float:单精度，4字节  double:双精度，8字节</li><li>二进制数型：BIT（b）:b位二进制数（1&lt;=b&lt;=64）,（b+7）/8字节，输入时用b’101’表示5</li></ol></li><li>日期时间型：<ol><li>YEAR:1字节整数 ‘YYYY’</li><li>DATE:3字节整数 ‘YYYY-MM-DD’</li><li>TIME:3字节整数 ‘HH:MM:SS’</li><li>DATETIME:8字节整数 ‘YYYY-MM-DD HH:MM:SS’</li><li>TIMESTAMP:四字节整数 ‘YYYY-MM-DD HH:MM:SS’</li></ol></li><li>字符串型：<ol><li>CHAR（n）:定长字符串型，n&lt;=255,不足n个时用空格补全</li><li>VARCHAR（n）:变长字符串型，n&lt;=65535</li><li>TEXT文本型：<ul><li>TINYTEXT:$L \leq 2^8$</li><li>TEXT:$L \leq 2^{16}$</li><li>MEDIUMTEXT:$L \leq 2^{24}$</li><li>LONGTEXT:$L \leq 2^{32}$</li></ul></li></ol></li><li>二进制串型：<ol><li>BINARY(n):定长二进制串型，最多存储n个字节，$n \leg 255$,不足位置用\0补全</li><li>VARBINARY(n):边长二进制串型，$n \leg 65535$</li><li>BLOB:二进制对象型(Binary Large Object)<ul><li>TINYBLOB:$L \leq 2^8$</li><li>BLOB:$L \leq 2^{16}$</li><li>MEDIUMBLOB:$L \leq 2^{24}$</li><li>LONGBLOB:$L \leq 2^{32}$</li></ul></li></ol></li><li>枚举型ENUM:<ol><li>例：ENUM(‘Mercury’,’Venus’,’Earth’,’Mars’)</li><li>枚举型的值只能取自值列表</li><li>值列表中最多包含65535个不同的值</li><li>如果值列表包含之多255个值，则占1字节；如果值列表中包含超过255个值，则占2字节</li></ol></li><li>集合型SET:<ol><li>例：SET(‘Mercury’,’Venus’,’Earth’,’Mars’)</li><li>集合型的值只能是值集合的子集</li><li>值列表中最多包含64个不同的值</li><li>存储为二进制数，列表中每个值对应一个二进制位。值在子集中存在，则相应位置为1</li><li>例如：’Mercury,Earth’存储为1010（此处存疑，ppt上面写的是0101）</li><li>占用空间大小取决于集合中元素的个数</li></ol></li></ol></li></ol><ul><li>创建关系模式功能：定义关系模式，</li></ul><ul><li>修改关系模式</li><li>删除关系模式</li><li>定义视图</li></ul><h3 id="3-2-SQL数据更新"><a href="#3-2-SQL数据更新" class="headerlink" title="3.2 SQL数据更新"></a>3.2 SQL数据更新</h3><h3 id="3-3-SQL数据查询"><a href="#3-3-SQL数据查询" class="headerlink" title="3.3 SQL数据查询"></a>3.3 SQL数据查询</h3>]]></content>
+      
+      
+      <categories>
+          
+          <category> 学习笔记 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> database </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>数据库系统02</title>
       <link href="2021/02/25/shu-ju-ku-xi-tong-02/"/>
       <url>2021/02/25/shu-ju-ku-xi-tong-02/</url>
