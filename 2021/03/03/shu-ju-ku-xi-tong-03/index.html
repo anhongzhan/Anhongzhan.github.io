@@ -463,7 +463,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2021-03-03
+                    2021-03-12
                 </div>
                 
 
@@ -530,8 +530,8 @@
 </ol>
 </li>
 <li>二进制串型：<ol>
-<li>BINARY(n):定长二进制串型，最多存储n个字节，$n \leg 255$,不足位置用\0补全</li>
-<li>VARBINARY(n):边长二进制串型，$n \leg 65535$</li>
+<li>BINARY(n):定长二进制串型，最多存储n个字节，n $\leg$ 255,不足位置用\0补全</li>
+<li>VARBINARY(n):边长二进制串型，n $\leg$ 65535</li>
 <li>BLOB:二进制对象型(Binary Large Object)<ul>
 <li>TINYBLOB:$L \leq 2^8$</li>
 <li>BLOB:$L \leq 2^{16}$</li>
@@ -542,14 +542,14 @@
 </ol>
 </li>
 <li>枚举型ENUM:<ol>
-<li>例：ENUM(‘Mercury’,’Venus’,’Earth’,’Mars’)</li>
+<li>例：ENUM （’Mercury’,’Venus’,’Earth’,’Mars’）</li>
 <li>枚举型的值只能取自值列表</li>
 <li>值列表中最多包含65535个不同的值</li>
 <li>如果值列表包含之多255个值，则占1字节；如果值列表中包含超过255个值，则占2字节</li>
 </ol>
 </li>
 <li>集合型SET:<ol>
-<li>例：SET(‘Mercury’,’Venus’,’Earth’,’Mars’)</li>
+<li>例：SET（’Mercury’,’Venus’,’Earth’,’Mars’）</li>
 <li>集合型的值只能是值集合的子集</li>
 <li>值列表中最多包含64个不同的值</li>
 <li>存储为二进制数，列表中每个值对应一个二进制位。值在子集中存在，则相应位置为1</li>
@@ -1103,7 +1103,7 @@
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">8.8k</span>&nbsp;字
+                class="white-color">6k</span>&nbsp;字
             
             
             
